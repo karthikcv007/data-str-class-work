@@ -1,6 +1,7 @@
 #include "Array.cpp"
 
-int main(){
+int main()
+{
 	cout<<"INSERTION OPERATIONS\n";
 	Array<int> myArray;
 	cout<<"INSERTION AT END \n";
@@ -17,10 +18,22 @@ int main(){
 	myArray.insert_at_pos(20,3);
 	myArray.insert_at_pos(30,4);
 	cout<<myArray;
+    //int p=myArray.partition();
+   // cout<<myArray;
+  //  cout<<"Partition:"<<p<<endl;
+    cout<<"QUICK SORT \n";
+	myArray.quick_sort(1,8);
+	cout<<myArray;
+	myArray.insert_at_end(15);
+	myArray.insertion_sort();
+	cout<<"INSERTION SORT \n"<<myArray;
 	cout<<"SEARCHING OPERATIONS: \n";
 	cout<<"LINEAR SEARCH \n";
 	int lin=myArray.linear_search(20);
 	cout<<"INDEX POSITION :"<<lin<<endl;
+	cout<<"BINARY SEARCH \n";
+	int bin=myArray.binary_search(10);
+	cout<<"INDEX POSITION:"<<bin<<endl;
 	cout<<"DELETION OPERATIONS: \n";
 	cout<<"DELETION AT BEGINNING \n";
 	myArray.delete_at_beg();
@@ -36,14 +49,36 @@ int main(){
 	cout<<"AFTER SELECTION SORT:\n"<<myArray;
 	myArray.insert_at_beg(23);
 	myArray.insert_at_beg(45);
-	myArray.insert_at_end(1);
 	myArray.bubble_sort();
 	cout<<"AFTER BUBBLE SORT:\n"<<myArray;
-	cout<<"BINARY SEARCH \n";
-	int bin=myArray.binary_search(20);
-	cout<<"INDEX POSITION:"<<bin<<endl;
-
-	
+	cout<<endl;
+	myArray.clockrotate(2);
+	cout<<myArray;
+	myArray.antirotate(3);
+	cout<<myArray;
+	cout<<"DISTINCT ELEMENTS ARE: \n";
+	myArray.distinct();
+	cout<<endl;
+	cout<<"FREQUENCY OF ELEMENTS : \n";
+	myArray.frequency();
+	cout<<endl;
+	//myArray.insert_at_end(7);
+	//myArray.insert_at_end(18);
+	//cout<<"MERGE SORT: \n";
+	//myArray.merge_sort(0,15);
+	//cout<<endl;
+	cout<<"Enter the element to replace:";
+	int num;
+	cin>>num;
+	cout<<"Enter the element to be replaced:";
+	int rep;
+	cin>>rep;
+	myArray.replace(num,rep);
+	cout<<"REPLACED ARRAY: \n";
+	cout<<myArray;
+	int leng=myArray.length();
+	cout<<"REVERSED ARRAY: \n";
+	myArray.reverse(leng);
 	return 0;
 }
 

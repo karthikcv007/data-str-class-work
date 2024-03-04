@@ -75,7 +75,7 @@ void Array<T>::delete_at_index(int pos)
 template<class T>
 T Array<T>::linear_search(T key)
 {
-	int index=NULL;
+	int index=-1;
 	int i=LB;
 	while (i<=UB)
 	{
@@ -88,19 +88,6 @@ T Array<T>::linear_search(T key)
 	}
 	return index;
 }
-//template <class T>
-//T Array<T>::find_min(T,int,int)
-//{
-//	int min=LB;
-//	for(int j=LB+1;j<UB;j++)
-//	{
-//		if (A[j]<A[min])
-//		{
-//			min=j;
-//		}
-//	}
-//	return min;
-//}
 template<class T>
 void Array<T>::swap(int p,int q)
 {
@@ -148,7 +135,7 @@ T Array<T>::binary_search(T key)
 			return mid;
 		}
 	}
-	return NULL;
+	return -1;
 }
 template<class T>
 void Array<T>::bubble_sort()
@@ -164,6 +151,146 @@ void Array<T>::bubble_sort()
 		}
 	}
 }
+template <class T>
+void Array<T>::insertion_sort(){
+	int i;
+	i=LB+1;
+	while(i<=UB){
+		T key=A[i];
+		int j;
+		j=i-1;
+		while(j>=LB and A[j]>key){
+			A[j+1]=A[j];
+			j=j-1;
+		}
+		A[j+1]=key;
+		i=i+1;
+	}
+}
+template<class T>
+int Array<T>::partition(int LB,int UB)
+{
+	int j=LB-1;
+	T pivot=A[UB];
+	int i=LB;
+	while (i<=UB-1)
+	{
+		if (A[i]<pivot)
+		{
+			j=j+1;
+			swap(i,j);
+		}
+		i+=1;	
+	}
+	swap(j+1,UB);
+	return j+1;
+}
+template<class T>
+void Array<T>::quick_sort(int LB, int UB)
+{
+	if(LB<UB)
+	{
+	int p=partition(LB,UB);
+	quick_sort(LB,p-1);
+	quick_sort(p+1,UB);	
+	}
+}
+template<class T>
+void Array<T>::clockrotate(int pos)
+{
+	cout<<"CLOCKWISE ROTATION: \n";
+	for(int i=0;i<pos;i++)
+	{
+		T temp=A[UB];
+		for(int j=UB;j>0;j--)
+		{
+			A[j]=A[j-1];
+		}
+		A[LB]=temp;
+	}
+}
+template <class T>
+void Array<T>::antirotate(int pos)
+{
+	cout<<"COUNTER CLOCKWISE: \n";
+	for(int i=LB;i<=pos;i++)
+	{
+		T temp=A[LB];
+		for(int j=LB;j<=UB;j++)
+		{
+			A[j]=A[j+1];
+		}
+		A[UB]=temp;
+	}
+}
+template<class T>
+void Array<T>::distinct()
+{
+	
+	for(int i=0;i<UB;i++)
+	{
+		int count=0;
+		for(int j=0;j<UB;j++)
+		{
+			if(A[i]==A[j])
+			{
+				count+=1;
+			}
+	    }
+		if(count==1)
+		{
+		  cout<<A[i]<<" ";	
+		}
+		
+		
+	}
+}
+template<class T>
+void Array<T>::frequency()
+{
+	int i;
+	int count=1;
+	quick_sort(LB,UB);
+	cout<<"Element "<<"	 "<<" Frequency "<<endl;
+	for(i=LB;i<=UB;i++)
+	{
+	  	if(A[i]==A[i+1])
+	  	{
+	  	  count+=1;	
+		}	
+	else
+	{
+		cout<<A[i]<<"	"<<count<<endl;
+		count=1;
+	}
+}
+}
+template<class T>
+void Array<T>::replace (T element,T key){
+	for(int i=LB;i<=UB;i++){
+		if(A[i]==element){
+			A[i]=key;
+		}
+	}
+}
+template<class T>
+int Array<T>::length(){
+	int i=0,length=0;
+	while(i<UB){
+		length++;
+		i++;
+	}
+	return length;
+}
+template<class T>
+void Array<T>::reverse(int size)
+{
+	while(size>1){
+		cout<<A[size]<<" ";
+		size--;
+	}
+	cout<<endl;
+}
 template <class U>
 ostream & operator <<(ostream & os, Array<U> M)
 {
@@ -176,4 +303,3 @@ ostream & operator <<(ostream & os, Array<U> M)
 	os<<endl;
 	return os;
 }
-

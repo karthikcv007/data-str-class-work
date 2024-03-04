@@ -20,6 +20,19 @@ class Array
 		void selection_sort();
 		T binary_search(T);
 		void bubble_sort();
+		void insertion_sort();
+		int partition(int,int);
+		void quick_sort(int,int);
+		//void merge(int,int,int);
+		//void merge_sort(int,int)
+		void clockrotate(int);
+		void antirotate(int);
+		void distinct();
+		void frequency();
+		void replace(T,T);
+		int length();
+		void reverse(int);
+		
 		template<class U>
 		friend ostream & operator <<(ostream &,Array <U>);
 };
